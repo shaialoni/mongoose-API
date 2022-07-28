@@ -10,7 +10,7 @@ const router = express.Router()
 
 // INDEX
 // GET /sunglsses
-router.get('/sunglasses', requireToken, (req, res, next) => {
+router.get('/sunglasses', (req, res, next) => {
 	Sunglasses.find()
 		.then((sunglasses) => {
 			return sunglasses.map((sunglasses) => sunglasses.toObject())
@@ -21,7 +21,7 @@ router.get('/sunglasses', requireToken, (req, res, next) => {
 
 // SHOW
 // GET /sunglsses/5a7db6c74d55bc51bdf39793
-router.get('/sunglsses/:id', requireToken, (req, res, next) => {
+router.get('/sunglasses/:id', (req, res, next) => {
 	Sunglasses.findById(req.params.id)
 		.then(handle404)
 		.then((sunglasses) => res.status(200).json({ sunglasses: sunglasses.toObject() }))
@@ -61,7 +61,7 @@ router.delete('/sunglasses/:id', requireToken, (req, res, next) => {
 		.then(handle404)
 		.then((sunglasses) => {
 			requireOwnership(req, sunglasses)
-			sunglsses.deleteOne()
+			sunglasses.deleteOne()
 		})
 		.then(() => res.sendStatus(204))
 		.catch(next)
