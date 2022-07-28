@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const {Schema, model } = mongoose
 
-const sunGlassesSchema = new Schema(
+const sunglassesSchema = new Schema(
 
 	{
 		brand: {
@@ -12,6 +12,10 @@ const sunGlassesSchema = new Schema(
 		frameColor: {
 			type: String,
 			required: true,
+		},
+		isPolarized: {
+			type: Boolean,
+			required: true
 		},
 		owner: {
 			type: mongoose.Schema.Types.ObjectId,
@@ -24,4 +28,4 @@ const sunGlassesSchema = new Schema(
 	}
 )
 
-module.exports = mongoose.model('Example', exampleSchema)
+module.exports = model('sunglasses', sunglassesSchema)
