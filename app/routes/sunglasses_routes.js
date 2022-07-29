@@ -30,7 +30,7 @@ router.get('/sunglasses/:id', (req, res, next) => {
 
 // CREATE
 // POST /sunglasses
-router.post('/sunglasses', requireToken, (req, res, next) => {
+router.post('/sunglasses', (req, res, next) => {
 	req.body.sunglasses.owner = req.user.id
 	Sunglasses.create(req.body.sunglasses)
 		.then((sunglasses) => {
@@ -41,7 +41,7 @@ router.post('/sunglasses', requireToken, (req, res, next) => {
 
 // UPDATE
 // PATCH /sunglsses/5a7db6c74d55bc51bdf39793
-router.patch('/sunglasses/:id', requireToken, removeBlanks, (req, res, next) => {
+router.patch('/sunglasses/:id', removeBlanks, (req, res, next) => {
 	delete req.body.sunglasses.owner
 
 	Sunglasses.findById(req.params.id)
@@ -56,7 +56,7 @@ router.patch('/sunglasses/:id', requireToken, removeBlanks, (req, res, next) => 
 
 // DESTROY
 // DELETE /sunglasses/5a7db6c74d55bc51bdf39793
-router.delete('/sunglasses/:id', requireToken, (req, res, next) => {
+router.delete('/sunglasses/:id', (req, res, next) => {
 	Sunglasses.findById(req.params.id)
 		.then(handle404)
 		.then((sunglasses) => {
