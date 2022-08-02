@@ -17,15 +17,15 @@ const sunglassesSchema = new Schema(
 			type: Boolean,
 			required: true
 		},
-		owner: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: 'User',
-			required: true,
-		},
+		// owner: {
+		// 	type: mongoose.Schema.Types.ObjectId,
+		// 	ref: 'User',
+		// 	required: true,
+		// },
 	},
 	{
 		timestamps: true,
 	}
 )
 
-module.exports = model('sunglasses', sunglassesSchema)
+module.exports = model('Sunglasses', sunglassesSchema)
