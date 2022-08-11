@@ -8,6 +8,11 @@ const removeBlanks = require('../../lib/remove_blank_fields')
 //const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
+//Home
+router.get('/', (req, res) => {
+	res.redirect('/sunglasses')
+})
+
 // INDEX
 // GET /sunglsses
 router.get('/sunglasses', (req, res, next) => {
